@@ -10,7 +10,6 @@ public class LexicographerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LexicographerApplication.class, args);
-
 	}
 
 }
