@@ -1,10 +1,12 @@
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\IWordList.java
+C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\SecurityConfiguration.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\web\WordController.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\model\User.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\service\DashboardService.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\IMeaningListForWord.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\exception\NotFoundLanguage.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\IRole.java
+C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\web\IndexController.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\jpa\MeaningJpa.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\jpa\RoleJpa.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\jpa\TypeJpa.java
@@ -12,6 +14,7 @@ C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicog
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\ICategory.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\web\LanguagesController.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\jpa\WordListJpa.java
+C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\service\_UserDetailsService.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\web\CategoryController.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\web\DashboardController.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\exception\NotFoundMeaining.java
@@ -21,11 +24,12 @@ C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicog
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\web\TypeController.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\ILanguage.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\IUser.java
-C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\web\ProfileController.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\IType.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\exception\NotFoundUser.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\service\DashboardServiceInterface.java
+C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\web\RolesController.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\model\Role.java
+C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\service\_UserDetails.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\dao\jpa\UserJpa.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\ServletInitializer.java
 C:\Users\Remzi\Desktop\SpringProject\Lexicographer\src\main\java\com\app\lexicographer\exception\NotFoundCategory.java
