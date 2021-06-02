@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.app.lexicographer
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.app.lexicographer.LexicographerApplication
