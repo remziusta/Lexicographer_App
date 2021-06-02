@@ -14,7 +14,7 @@ public class Role {
 	
 	@Id
 	@GeneratedValue(generator = "roleSeq", strategy = GenerationType.SEQUENCE )
-	@SequenceGenerator(sequenceName = "roleSeq", name = "ROLES_TB_SEQ")
+	@SequenceGenerator(sequenceName = "roleSeq", name = "ROLES_TB_SEQ", allocationSize = 1)
 	private Long id;
 	
 	@Column(name = "role")
