@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/addword.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/categorydetails.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/dashboard.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/languagedetails.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/roledetails.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/userdetails.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/worddetails.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/words.jsp=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8
