@@ -1,1 +1,0 @@
-web: java $JAVA_OPTS -war target/classes:target/dependency/*.war com.app.lexicographer.LexicographerApplication
