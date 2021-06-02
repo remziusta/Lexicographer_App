@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -war target/classes:target/dependency/* com.app.lexicographer.LexicographerApplication
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar
