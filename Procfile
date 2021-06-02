@@ -1,1 +1,1 @@
-java -jar target/dependency/Lexicographer.jar target/*.war
+java $JAVA_OPTS -cp target/classes:target/dependency/* LexicographerApplicaton
