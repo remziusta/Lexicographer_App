@@ -13,8 +13,8 @@
 	crossorigin="anonymous" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-	crossorigin="anonymous">
+	integrity="undefined" crossorigin="anonymous">
+
 <title>Lexicographer</title>
 
 </head>
@@ -45,12 +45,12 @@
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}">
 						</form>
-						
-						<li class="nav-item mr-3 pt-3 pb-3">
-							<a onClick="document.forms['logoutForm'].submit()" class="btn btn-dark">
-								<i class="fas fa-user-times"></i> Logout
-							</a>
-						</li>
+
+						<li class="nav-item mr-3 pt-3 pb-3"><a
+							onClick="document.forms['logoutForm'].submit()"
+							class="btn btn-dark"> <i class="fas fa-user-times"></i>
+								Logout
+						</a></li>
 					</c:if>
 				</ul>
 			</div>
@@ -94,13 +94,10 @@
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		crossorigin="anonymous"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
 		integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
 		crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -14,8 +14,7 @@
 	crossorigin="anonymous" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-	crossorigin="anonymous">
+	integrity="undefined" crossorigin="anonymous">
 <title>Admin Page</title>
 
 </head>
@@ -41,8 +40,7 @@
 							Types</a></li>
 					<li class="nav-item px-2"><a href="/languages"
 						class="nav-link ">Languages</a></li>
-					<li class="nav-item px-2 "><a href="/roles"
-						class="nav-link ">Role</a></li>
+					<li class="nav-item px-2 "><a href="/roles" class="nav-link ">Role</a></li>
 				</ul>
 
 				<ul class="navbar-nav ml-auto">
@@ -53,9 +51,10 @@
 						</form>
 					</c:if>
 					<li class="nav-item"><button
-						onClick="document.forms['logoutForm'].submit()" class="nav-link btn btn-dark">
+							onClick="document.forms['logoutForm'].submit()"
+							class="nav-link btn btn-dark">
 							<i class="fas fa-user-times"></i> Logout
-					</button></li>
+						</button></li>
 				</ul>
 			</div>
 		</div>
@@ -152,17 +151,14 @@
 
 
 </body>
+
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-	integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-	crossorigin="anonymous"></script>
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+		integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+		crossorigin="anonymous"></script>
 
 
 <script>
