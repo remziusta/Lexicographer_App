@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-light bg-light p-0">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
 		<div class="container">
 			<a href="/" class="navbar-brand"><b>Lexicographer</b></a>
 			<button class="navbar-toggler" data-toggle="collapse"
@@ -53,6 +53,11 @@
 							${message }
 						</div>
 					</c:if>
+					<c:if test="${registerSuccess != null }">
+						<div class="alert alert-success" role="alert">
+							${registerSuccess}
+						</div>
+					</c:if>					
 					<form action="${path}/login" method="POST">
 						<div class="form-group">
 							<label for="username"><b>Username</b></label> <input type="text"

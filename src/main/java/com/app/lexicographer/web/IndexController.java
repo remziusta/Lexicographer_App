@@ -33,12 +33,14 @@ public class IndexController {
 	}
 	
 	@GetMapping(value = "/login")
-	public String getLogin(Model model, String error, String logout) {
+	public String getLogin(Model model, String error, String logout,String registerSuccess ) {
 		if (error != null) {
 			model.addAttribute("error", "Your username and password is valid");
 		}
 		if (logout != null) {
 			model.addAttribute("message", "You have been logout success");
+		}if (registerSuccess != null) {
+			model.addAttribute("registerSuccess", "Register Success...");
 		}
 		return "login";
 	}
@@ -70,6 +72,7 @@ public class IndexController {
 			user.setActive(true);
 			user.setRole(dashboardService.findByRoleNameRole("ROLE_USER"));
 			dashboardService.createUser(user);
+			model.addAttribute("registerSuccess", "Register Success...");
 			return "redirect:/login";
 		}
 		

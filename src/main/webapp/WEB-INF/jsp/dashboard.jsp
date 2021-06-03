@@ -19,9 +19,9 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
 		<div class="container">
-			<a href="/admin/dashboard" class="navbar-brand">Lexicographer</a>
+			<a href="/admin/dashboard" class="navbar-brand m-1">Lexicographer</a>
 			<button class="navbar-toggler" data-toggle="collapse"
 				data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
@@ -41,16 +41,17 @@
 					<li class="nav-item px-2 "><a href="/roles" class="nav-link ">Role</a></li>
 				</ul>
 
-				<ul class="navbar-nav ml-auto">
+				<ul class="navbar-nav ml-auto mt-2 mr-2">
 					<c:if test="${pageContext.request.userPrincipal.name != null }">
 						<form method="post" id="logoutForm" action="${path}/logout">
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}">
 						</form>
 					</c:if>
-					<li class="nav-item"><a	onClick="document.forms['logoutForm'].submit()" class="nav-link">
-						<i class="fas fa-user-times"></i> Logout </a>
-					</li>
+					<li class="nav-item"><button
+						onClick="document.forms['logoutForm'].submit()" class="nav-link btn btn-dark">
+							<i class="fas fa-user-times"></i> Logout
+					</button></li>
 				</ul>
 			</div>
 		</div>

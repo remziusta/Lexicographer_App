@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,12 +18,11 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css" />
 <title>Admin Page</title>
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
 		<div class="container">
 			<a href="/admin/dashboard" class="navbar-brand">Lexicographer</a>
 			<button class="navbar-toggler" data-toggle="collapse"
@@ -51,9 +51,10 @@
 								value="${_csrf.token}">
 						</form>
 					</c:if>
-					<li class="nav-item"><a	onClick="document.forms['logoutForm'].submit()" class="nav-link">
-						<i class="fas fa-user-times"></i> Logout </a>
-					</li>
+					<li class="nav-item"><button
+						onClick="document.forms['logoutForm'].submit()" class="nav-link btn btn-dark">
+							<i class="fas fa-user-times"></i> Logout
+					</button></li>
 				</ul>
 			</div>
 		</div>
@@ -89,6 +90,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
+					<c:if test="${NotCategory != null}">
+						<div class="alert alert-danger" role="alert">${NotCategory}</div>
+					</c:if>
+					<c:if test="${MinimumError != null}">
+						<div class="alert alert-danger" role="alert">${MinimumError}</div>
+					</c:if>
 					<div class="card">
 						<div class="card-header">
 							<div class="card-body">

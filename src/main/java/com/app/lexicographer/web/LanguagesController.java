@@ -2,6 +2,7 @@ package com.app.lexicographer.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,18 @@ public class LanguagesController {
 
 	// Create new category method
 	@PostMapping(value = "")
-	public String saveLanguage(@ModelAttribute Language language) {
+	public String saveLanguage(@ModelAttribute Language language, Model model) {
+		if(language.getLANGUAGE().isEmpty()) {
+			model.addAttribute("NotLanguage", "Language values is not empty.");
+			model.addAttribute("languages",dashboardService.getAllLanguages());
+			return "languages";
+		}
+		if(language.getLANGUAGE().length() != 2) {
+			model.addAttribute("MinimumError","The language value you entered is 2 characters.");
+			model.addAttribute("languages",dashboardService.getAllLanguages());
+			return "languages";
+		}
+		language.setLANGUAGE(language.getLANGUAGE().toUpperCase());
 		dashboardService.createLanguage(language);
 		return "redirect:/languages";
 	}
@@ -48,15 +60,26 @@ public class LanguagesController {
 	}
 
 	// Delete Category
-	@GetMapping(value = "/language/delete{id}")
-	public String removeType(@ModelAttribute Language language) {
+	@GetMapping(value = "/language/delete/{id}")
+	public String removeLanguage(@ModelAttribute Language language) {
 		dashboardService.deleteLanguage(language.getId());
 		return "redirect:/languages";
 	}
 
 	// Update for Category
 	@PostMapping(value = "/language/update/{id}")
-	public String updateType(@ModelAttribute Language language) {
+	public String updateType(@ModelAttribute Language language, Model model) {
+		if(language.getLANGUAGE().isEmpty()) {
+			model.addAttribute("NotLanguage", "Language values is not empty.");
+			model.addAttribute("languages",dashboardService.getAllLanguages());
+			return "languagedetails";
+		}
+		if(language.getLANGUAGE().length() != 2) {
+			model.addAttribute("MinimumError","The language value you entered is 2 characters.");
+			model.addAttribute("languages",dashboardService.getAllLanguages());
+			return "languagedetails";
+		}
+		language.setLANGUAGE(language.getLANGUAGE().toUpperCase());
 		dashboardService.updateLanguage(language);
 		return "redirect:/languages";
 	}

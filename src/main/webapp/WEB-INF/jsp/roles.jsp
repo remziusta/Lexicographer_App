@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
 		<div class="container">
 			<a href="/admin/dashboard" class="navbar-brand">Lexicographer</a>
 			<button class="navbar-toggler" data-toggle="collapse"
@@ -52,9 +52,11 @@
 								value="${_csrf.token}">
 						</form>
 					</c:if>
-					<li class="nav-item"><a	onClick="document.forms['logoutForm'].submit()" class="nav-link">
-						<i class="fas fa-user-times"></i> Logout </a>
-					</li>
+					<li class="nav-item"><button
+							onClick="document.forms['logoutForm'].submit()"
+							class="nav-link btn btn-dark">
+							<i class="fas fa-user-times"></i> Logout
+						</button></li>
 				</ul>
 			</div>
 		</div>
@@ -84,6 +86,9 @@
 			</div>
 			<div class="row">
 				<div class="col">
+					<c:if test="${NotRole != null}">
+						<div class="alert alert-danger" role="alert">${NotRole}</div>
+					</c:if>
 					<form:form modelAttribute="role" method="post"
 						cssClass="form-inline">
 						<div class="form-group">
@@ -118,13 +123,11 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${roles}" var="role"
-									varStatus="status">
+								<c:forEach items="${roles}" var="role" varStatus="status">
 									<tr>
 										<td>${role.getId()}</td>
 										<td>${role.getROLE()}</td>
-										<td><a
-											href="/roles/role/details/${role.getId()}"
+										<td><a href="/roles/role/details/${role.getId()}"
 											class="btn btn-danger"> <i
 												class="fas fa-angle-double-right"></i> Details
 										</a></td>

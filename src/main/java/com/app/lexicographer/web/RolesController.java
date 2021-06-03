@@ -2,6 +2,7 @@ package com.app.lexicographer.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,7 +34,13 @@ public class RolesController {
 	}
 
 	@PostMapping(value = "")
-	public String addRole(@ModelAttribute Role role) {
+	public String addRole(@ModelAttribute Role role,Model model) {
+		if(role.getROLE().isEmpty()) {
+			model.addAttribute("NotRole", "Role values is not empty.");
+			model.addAttribute("roles",dashboardService.getAllRoles());
+			return "roles";
+		}
+		
 		role.setROLE("ROLE_" + role.getROLE().toUpperCase());
 		dashboardService.createRole(role);
 		return "redirect:/roles";
@@ -57,7 +64,13 @@ public class RolesController {
 
 	// Update for Category
 	@PostMapping(value = "/role/update/{Id}")
-	public String updateType(@ModelAttribute Role role) {
+	public String updateType(@ModelAttribute Role role, Model model) {
+		if(role.getROLE().isEmpty()) {
+			model.addAttribute("NotRole", "Role values is not empty.");
+			model.addAttribute("roles",dashboardService.getAllRoles());
+			return "roledetails";
+		}		
+		role.setROLE("ROLE_" + role.getROLE().toUpperCase());
 		dashboardService.updateRole(role);
 		return "redirect:/roles";
 	}

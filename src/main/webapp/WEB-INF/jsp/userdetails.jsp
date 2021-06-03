@@ -17,12 +17,11 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css" />
 <title>Admin Page</title>
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
 		<div class="container">
 			<a href="/admin/dashboard" class="navbar-brand">Lexicographer</a>
 			<button class="navbar-toggler" data-toggle="collapse"
@@ -35,8 +34,8 @@
 						class="nav-link ">Dashboard</a></li>
 					<li class="nav-item px-2"><a href="/words" class="nav-link ">Words</a></li>
 					<li class="nav-item px-2"><a href="/categories"
-						class="nav-link active">Categories</a></li>
-					<li class="nav-item px-2"><a href="/users" class="nav-link">Users</a></li>
+						class="nav-link ">Categories</a></li>
+					<li class="nav-item px-2"><a href="/users" class="nav-link active">Users</a></li>
 					<li class="nav-item px-2"><a href="/types" class="nav-link">Word
 							Types</a></li>
 					<li class="nav-item px-2"><a href="/languages"
@@ -51,9 +50,10 @@
 								value="${_csrf.token}">
 						</form>
 					</c:if>
-					<li class="nav-item"><a	onClick="document.forms['logoutForm'].submit()" class="nav-link">
-						<i class="fas fa-user-times"></i> Logout </a>
-					</li>
+					<li class="nav-item"><button
+						onClick="document.forms['logoutForm'].submit()" class="nav-link btn btn-dark">
+							<i class="fas fa-user-times"></i> Logout
+					</button></li>
 				</ul>
 			</div>
 		</div>
@@ -91,10 +91,31 @@
 				<div class="col">
 					<div class="card">
 						<div class="card-header">
-							<h4>Edit Word</h4>
+							<c:if test="${userError != null }">
+								<div class="alert alert-danger" role="alert">${userError}</div>
+							</c:if>
+							<c:if test="${userminError != null }">
+								<div class="alert alert-danger" role="alert">${userminError}</div>
+							</c:if>
+							<c:if test="${nameError != null }">
+								<div class="alert alert-danger" role="alert">${nameError}</div>
+							</c:if>
+							<c:if test="${nameMinEror != null }">
+								<div class="alert alert-danger" role="alert">${nameMinEror}</div>
+							</c:if>
+							<c:if test="${emailError != null }">
+								<div class="alert alert-danger" role="alert">${emailError}</div>
+							</c:if>
+							<c:if test="${passError != null }">
+								<div class="alert alert-danger" role="alert">${passError}</div>
+							</c:if>
+							<c:if test="${roleError != null }">
+								<div class="alert alert-danger" role="alert">${roleError}</div>
+							</c:if>
 							<div class="card-body">
-								<form:form modelAttribute="user" action="/users/user/update/${user.getId()}"
-									method="post" cssClass="form-horizantal">
+								<form:form modelAttribute="user"
+									action="/users/user/update/${user.getId()}" method="post"
+									cssClass="form-horizantal">
 									<div class="form-group">
 										Username :
 										<form:input type="text" path="username"
@@ -110,7 +131,7 @@
 										E-mail :
 										<form:input type="email" path="email" cssClass="form-control" />
 									</div>
-									
+
 									<div class="form-group">
 										Role :
 										<form:select path="role.id" cssClass="form-control">
@@ -122,20 +143,21 @@
 										</form:select>
 									</div>
 									<div class="form-group">
-									<button type="submit" class="btn btn-success btn-block"> <i
-										class="fas fa-check"></i> Update Changes
-									</button>
+										<div class="row">
+											<div class="col-md-6">
+												<button type="submit" class="btn btn-success ">
+													<i class="fas fa-check"></i> Update Changes
+												</button>
+											</div>
+											<div class="col-md-6">
+												<a href="/users/user/delete/${user.getId()}"
+													class="btn btn-danger "> <i class="fas fa-trash"></i>
+													Delete User
+												</a>
+											</div>
+										</div>
 									</div>
-									<div class="form-group">
-									<a href="/users/user/delete/${user.getId()}" class="btn btn-danger btn-block"> <i
-										class="fas fa-trash"></i> Delete Word
-									</a>
-									</div>
-
-
 								</form:form>
-
-
 							</div>
 						</div>
 					</div>

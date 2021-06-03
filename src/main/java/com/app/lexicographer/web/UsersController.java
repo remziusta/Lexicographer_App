@@ -3,6 +3,7 @@ package com.app.lexicographer.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,9 +43,49 @@ public class UsersController {
 	}
 
 	@PostMapping(value = "/user/new")
-	public String postAddNewUser(@ModelAttribute User user) {
+	public String postAddNewUser(@ModelAttribute User user, Model model) {
+		if (user.getUsername().isEmpty()) {
+			model.addAttribute("userError", "Username value is not empty.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "adduser";
+		}
+		if (user.getUsername().length() < 5) {
+			model.addAttribute("userminError", "The username value you entered is a min. of 5 characters.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "adduser";
+		}
+		if (user.getFullname().isEmpty()) {
+			model.addAttribute("nameError", "Full Name value is not empty.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "adduser";
+		}
+		if (user.getFullname().length() < 6 || user.getFullname().length() > 50) {
+			model.addAttribute("nameMinEror",
+					"The full name value you entered is a min. of 6 characters or a max. of 50 characters.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "adduser";
+		}
+		if (user.getEmail().isEmpty()) {
+			model.addAttribute("emailError", "E-mail value is not empty.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "adduser";
+		}
+		if (user.getPassword().isEmpty()) {
+			model.addAttribute("passError", "Password value is not empty.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "adduser";
+		}
+		if (user.getRole().getId() == null) {
+			model.addAttribute("roleError", "Please select a role");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "adduser";
+		}
+		user.getEmail().trim();
+		user.getFullname().trim();
+		user.getPassword().trim();
+		user.getUsername().trim();
 		user.setRole(dashboardService.findByIdRole(Long.valueOf(user.getRole().getId())));
-		BCryptPasswordEncoder bCryptPasswordEncoder = new  BCryptPasswordEncoder();
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		dashboardService.createUser(user);
 		return "redirect:/users";
@@ -65,14 +106,50 @@ public class UsersController {
 		dashboardService.deleteUser(user.getId());
 		return "redirect:/users";
 	}
-	
+
 	// Update for Category
 	@PostMapping(value = "/user/update/{id}")
-	public String updateUser(@ModelAttribute User user) {
-	dashboardService.updateUser(user);
-	return "redirect:/users";
+	public String updateUser(@ModelAttribute User user, Model model) {
+		if (user.getUsername().isEmpty()) {
+			model.addAttribute("userError", "Username value is not empty.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "userdetails";
+		}
+		if (user.getUsername().length() < 5) {
+			model.addAttribute("userminError", "The username value you entered is a min. of 5 characters.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "userdetails";
+		}
+		if (user.getFullname().isEmpty()) {
+			model.addAttribute("nameError", "Full Name value is not empty.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "userdetails";
+		}
+		if (user.getFullname().length() < 6 || user.getFullname().length() > 50) {
+			model.addAttribute("nameMinEror",
+					"The full name value you entered is a min. of 6 characters or a max. of 50 characters.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "userdetails";
+		}
+		if (user.getEmail().isEmpty()) {
+			model.addAttribute("emailError", "E-mail value is not empty.");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "userdetails";
+		}
+		if (user.getRole().getId() == null) {
+			model.addAttribute("roleError", "Please select a role");
+			model.addAttribute("roles", dashboardService.getAllRoles());
+			return "userdetails";
+		}
+		user.getEmail().trim();
+		user.getFullname().trim();
+		user.getPassword().trim();
+		user.getUsername().trim();
+		
+		dashboardService.updateUser(user);
+		return "redirect:/users";
 	}
-	
+
 	
 
 }

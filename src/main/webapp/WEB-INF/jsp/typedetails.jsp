@@ -19,7 +19,7 @@
 <title>Admin Page</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
 		<div class="container">
 			<a href="/admin/dashboard" class="navbar-brand">Lexicographer</a>
 			<button class="navbar-toggler" data-toggle="collapse"
@@ -48,9 +48,11 @@
 								value="${_csrf.token}">
 						</form>
 					</c:if>
-					<li class="nav-item"><a	onClick="document.forms['logoutForm'].submit()" class="nav-link">
-						<i class="fas fa-user-times"></i> Logout </a>
-					</li>
+					<li class="nav-item"><button
+							onClick="document.forms['logoutForm'].submit()"
+							class="nav-link btn btn-dark">
+							<i class="fas fa-user-times"></i> Logout
+						</button></li>
 				</ul>
 			</div>
 		</div>
@@ -88,7 +90,12 @@
 				<div class="col">
 					<div class="card">
 						<div class="card-header">
-							<h4>Edit Type</h4>
+							<c:if test="${NotType != null}">
+								<div class="alert alert-danger" role="alert">${NotType}</div>
+							</c:if>
+							<c:if test="${MinimumError != null}">
+								<div class="alert alert-danger" role="alert">${MinimumError}</div>
+							</c:if>
 							<div class="card-body">
 								<form:form modelAttribute="type" method="post"
 									action="/types/type/update/${type.getId()}"

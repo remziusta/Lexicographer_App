@@ -22,7 +22,7 @@
 
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-light bg-light p-0">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
 		<div class="container">
 			<a href="/" class="navbar-brand"><b>Lexicographer</b></a>
 			<button class="navbar-toggler" data-toggle="collapse"

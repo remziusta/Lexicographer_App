@@ -19,7 +19,7 @@
 <title>Admin Page</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
 		<div class="container">
 			<a href="/admin/dashboard" class="navbar-brand">Lexicographer</a>
 			<button class="navbar-toggler" data-toggle="collapse"
@@ -49,9 +49,10 @@
 								value="${_csrf.token}">
 						</form>
 					</c:if>
-					<li class="nav-item"><a	onClick="document.forms['logoutForm'].submit()" class="nav-link">
-						<i class="fas fa-user-times"></i> Logout </a>
-					</li>
+					<li class="nav-item"><button
+						onClick="document.forms['logoutForm'].submit()" class="nav-link btn btn-dark">
+							<i class="fas fa-user-times"></i> Logout
+					</button></li>
 				</ul>
 			</div>
 		</div>
@@ -77,6 +78,27 @@
 				<div class="col">
 					<div class="card">
 						<div class="card-header">
+							<c:if test="${userError != null }">
+								<div class="alert alert-danger" role="alert">${userError}</div>
+							</c:if>
+							<c:if test="${userminError != null }">
+								<div class="alert alert-danger" role="alert">${userminError}</div>
+							</c:if>
+							<c:if test="${nameError != null }">
+								<div class="alert alert-danger" role="alert">${nameError}</div>
+							</c:if>
+							<c:if test="${nameMinEror != null }">
+								<div class="alert alert-danger" role="alert">${nameMinEror}</div>
+							</c:if>
+							<c:if test="${emailError != null }">
+								<div class="alert alert-danger" role="alert">${emailError}</div>
+							</c:if>
+							<c:if test="${passError != null }">
+								<div class="alert alert-danger" role="alert">${passError}</div>
+							</c:if>
+							<c:if test="${roleError != null }">
+								<div class="alert alert-danger" role="alert">${roleError}</div>
+							</c:if>
 							<div class="card-body">
 								<form:form modelAttribute="user" action="/users/user/new"
 									method="post" cssClass="form-horizantal">
