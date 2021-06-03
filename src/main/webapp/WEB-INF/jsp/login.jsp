@@ -26,7 +26,8 @@
 		<div class="container">
 			<a href="/" class="navbar-brand"><b>Lexicographer</b></a>
 			<button class="navbar-toggler" data-toggle="collapse"
-				data-target="#navbarCollapse">
+				data-target="#navbarCollapse" aria-controls="navbarSupportedContent"
+				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
@@ -44,30 +45,27 @@
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
 					<c:if test="${error != null }">
-						<div class="alert alert-danger" role="alert">
-							${error }
-						</div>
+						<div class="alert alert-danger" role="alert">${error }</div>
 					</c:if>
 					<c:if test="${message != null }">
-						<div class="alert alert-success" role="alert">
-							${message }
-						</div>
+						<div class="alert alert-success" role="alert">${message }</div>
 					</c:if>
 					<c:if test="${registerSuccess != null }">
 						<div class="alert alert-success" role="alert">
-							${registerSuccess}
-						</div>
-					</c:if>					
+							${registerSuccess}</div>
+					</c:if>
 					<form action="${path}/login" method="POST">
 						<div class="form-group">
 							<label for="username"><b>Username</b></label> <input type="text"
 								class="form-control" name="username" id="username">
 						</div>
 						<div class="form-group">
-							<label for="password"><b>Password</b></label> <input type="password"
-								class="form-control" name="password" id="password">
+							<label for="password"><b>Password</b></label> <input
+								type="password" class="form-control" name="password"
+								id="password">
 						</div>
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}">
 						<div class="form-group text-right">
 							<a href="" class="font-weight-light mr-1">Forgot Password</a>
 							<button type="submit" class="btn btn-outline-success">

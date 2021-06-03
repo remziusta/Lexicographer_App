@@ -26,7 +26,8 @@
 		<div class="container">
 			<a href="/admin/dashboard" class="navbar-brand">Lexicographer</a>
 			<button class="navbar-toggler" data-toggle="collapse"
-				data-target="#navbarCollapse">
+				data-target="#navbarCollapse" aria-controls="navbarSupportedContent"
+				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
