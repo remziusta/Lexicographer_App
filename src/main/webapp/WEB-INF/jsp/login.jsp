@@ -31,8 +31,15 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav ml-auto">
+					<li class="nav-item mr-3 pt-3 pb-3">
+						<button class="btn btn-light">
+							<i class="fas fa-info"></i> About
+						</button>
+					</li>
+
 					<li class="nav-item pt-3 pb-3"><a href="/register"
-						class="btn btn-danger">Sign Up</a></li>
+						class="btn btn-light"><i class="fas fa-user-plus"></i>
+							Register</a></li>
 				</ul>
 			</div>
 		</div>
@@ -65,11 +72,21 @@
 						</div>
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}">
-						<div class="form-group text-right">
-							<a href="" class="font-weight-light mr-1">Forgot Password</a>
-							<button type="submit" class="btn btn-outline-success">
-								Login</button>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox"
+										id="defaultCheck1" name="remember-me"> <label
+										class="form-check-label" for="defaultCheck1"> Remember
+										Me </label>
+								</div>
+							</div>
+							<div class=" form-group col-md-6 text-right">
+								<button type="submit" class="btn btn-outline-success">
+									Login</button>
+							</div>
 						</div>
+
 					</form>
 				</div>
 				<div class="col-md-3"></div>

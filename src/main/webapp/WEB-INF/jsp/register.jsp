@@ -31,9 +31,14 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item mr-3 pt-3 pb-3"><a href="/login"
-						class="btn btn-outline-danger  ">Login</a></li>
+					<li class="nav-item mr-3 pt-3 pb-3">
+						<button class="btn btn-light">
+							<i class="fas fa-info"></i> About
+						</button>
+					</li>
 
+					<li class="nav-item mr-3 pt-3 pb-3"><a href="/login"
+						class="btn btn-light"><i class="fas fa-sign-in-alt"></i> Login</a></li>
 				</ul>
 			</div>
 		</div>
@@ -85,7 +90,7 @@
 									<form:input path="role.id" type="hidden" value="0" />
 									<div class="form-group">
 										<button type="submit" class="btn btn-info">
-											<i class="fas fa-check"></i> Save
+											<i class="fas fa-check"></i> Register
 										</button>
 									</div>
 								</form:form>

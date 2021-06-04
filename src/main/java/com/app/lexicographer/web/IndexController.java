@@ -1,6 +1,8 @@
 package com.app.lexicographer.web;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,58 +18,70 @@ import com.app.lexicographer.service.DashboardService;
 @Controller
 @RequestMapping(value = "")
 public class IndexController {
-	
+
 	@Autowired
 	DashboardService dashboardService;
-	
+
 	@ModelAttribute
 	public User initUser() {
 		return new User();
 	}
-	
+
 	@GetMapping(value = "")
 	public ModelAndView getMainPage() {
-		ModelAndView mav  = new ModelAndView();
-		mav.setViewName("index");
+		ModelAndView mav = new ModelAndView();
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		try {
+			String role = dashboardService.findByUsernameUser(username).getRole().getROLE();
+			mav.addObject("role", role);
+			mav.setViewName("index");
+		} catch (Exception e) {
+			// TODO: handle exception
+			mav.addObject("role", "anonymous");
+			mav.setViewName("index");
+			return mav;
+		}
+
 		return mav;
 	}
-	
+
 	@GetMapping(value = "/login")
-	public String getLogin(Model model, String error, String logout,String registerSuccess ) {
+	public String getLogin(Model model, String error, String logout, String registerSuccess) {
 		if (error != null) {
 			model.addAttribute("error", "Your username and password is valid");
 		}
 		if (logout != null) {
 			model.addAttribute("message", "You have been logout success");
-		}if (registerSuccess != null) {
+		}
+		if (registerSuccess != null) {
 			model.addAttribute("registerSuccess", "Register Success...");
 		}
 		return "login";
 	}
-	
+
 	@GetMapping(value = "/register")
 	public ModelAndView getRegisterPage() {
-		ModelAndView mav  = new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("register");
 		return mav;
 	}
-	
+
 	@PostMapping("/register")
-	public String postRegister(@ModelAttribute User user,Model model) {
-		if(user.getEmail().isEmpty()) {
-			model.addAttribute("emailerror", "Check your email");			
+	public String postRegister(@ModelAttribute User user, Model model) {
+		if (user.getEmail().isEmpty()) {
+			model.addAttribute("emailerror", "Check your email");
 			return "register";
-		}else if(user.getFullname().isEmpty()){
+		} else if (user.getFullname().isEmpty()) {
 			model.addAttribute("fullname", "Check your fullname");
 			return "register";
-		}else if(user.getPassword().isEmpty()){
+		} else if (user.getPassword().isEmpty()) {
 			model.addAttribute("passerror", "Check your password");
 			return "register";
-		}else if(user.getUsername().isEmpty()) {
+		} else if (user.getUsername().isEmpty()) {
 			model.addAttribute("usererror", "Check your username");
 			return "register";
-		}else {			
-			BCryptPasswordEncoder bCryptPasswordEncoder = new  BCryptPasswordEncoder();
+		} else {
+			BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 			user.setActive(true);
 			user.setRole(dashboardService.findByRoleNameRole("ROLE_USER"));
@@ -75,7 +89,6 @@ public class IndexController {
 			model.addAttribute("registerSuccess", "Register Success...");
 			return "redirect:/login";
 		}
-		
+
 	}
-	
 }

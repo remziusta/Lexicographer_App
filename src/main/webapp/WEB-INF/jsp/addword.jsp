@@ -105,7 +105,8 @@
 									<hr>
 									<!-- MEANS -->
 									<div id="meanings" class="form-group"></div>
-
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}">
 									<div class="form-group">
 										<button type="submit" class="btn btn-info">
 											<i class="fas fa-check"></i> Save
@@ -143,14 +144,11 @@
 <script>
 	// Get the current year for the copyright
 	$('#year').text(new Date().getFullYear());
-
 	function addMeanToDiv() {
 		let counter = document.getElementById("meaningAdd");
 		counter.value = Number(counter.value) + 1;
 		let count = counter.value
-
 		let divMeaning = document.getElementById("meanings");
-
 		let str = '<div id="meaningContext'+count+'">'
 				+ '<div class="form-group">'
 				+ '<label for="MEAN'+count+'"><b>Mean :</b></label>'
@@ -181,7 +179,6 @@
 				+ '<c:forEach items="${types}" var="type" varStatus="status">'
 				+ '<option value="${type.getId()}">${type.getTYPE()}</option>'
 				+ '</c:forEach>' + '</select>' + '</div>' + '</div>' + '<hr>';
-
 		divMeaning.innerHTML += str;
 	}
 </script>

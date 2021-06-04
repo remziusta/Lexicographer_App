@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,28 +31,51 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item mr-3 pt-3 pb-3">
-						<button class="btn btn-light  ">About</button>
-					</li>
 					<c:if test="${pageContext.request.userPrincipal.name == null}">
+						<li class="nav-item mr-3 pt-3 pb-3">
+							<button class="btn btn-light">
+								<i class="fas fa-info"></i> About
+							</button>
+						</li>
 						<li class="nav-item mr-3 pt-3 pb-3"><a href="/login"
-							class="btn btn-outline-danger  ">Login</a></li>
+							class="btn btn-light"><i class="fas fa-sign-in-alt"></i> Login</a></li>
 						<li class="nav-item pt-3 pb-3"><a href="/register"
-							class="btn btn-danger">Sign Up</a></li>
+							class="btn btn-light"><i class="fas fa-user-plus"></i> Register</a></li>
 					</c:if>
 					<c:if test="${pageContext.request.userPrincipal.name != null}">
+						<c:if test="${role == 'ROLE_ADMIN'}">
+							<form method="post" id="logoutForm" action="${path}/logout">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}">
+							</form>
+							<li class="nav-item pt-3 pb-3"><a href="/admin/dashboard"
+								class="btn btn-light"><i class="fab fa-autoprefixer"></i> Go
+									to Admin Panel</a></li>
+							<li class="nav-item mr-3 pt-3 pb-3"><a
+								onClick="document.forms['logoutForm'].submit()"
+								class="btn btn-light"> <i class="fas fa-user-times"></i>
+									Logout
+							</a></li>
+						</c:if>
+						<c:if test="${role == 'ROLE_USER'}">
+							<form method="post" id="logoutForm" action="${path}/logout">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}">
+							</form>
+							<li class="nav-item mr-3 pt-3 pb-3">
+								<button class="btn btn-light">
+									<i class="fas fa-info"></i> About
+								</button>
+							</li>
+							<li class="nav-item mr-3 pt-3 pb-3"><a
+								onClick="document.forms['logoutForm'].submit()"
+								class="btn btn-dark"> <i class="fas fa-user-times"></i>
+									Logout
+							</a></li>
+						</c:if>
 
-						<form method="post" id="logoutForm" action="${path}/logout">
-							<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}">
-						</form>
-
-						<li class="nav-item mr-3 pt-3 pb-3"><a
-							onClick="document.forms['logoutForm'].submit()"
-							class="btn btn-dark"> <i class="fas fa-user-times"></i>
-								Logout
-						</a></li>
 					</c:if>
+
 				</ul>
 			</div>
 		</div>

@@ -14,18 +14,18 @@ import com.app.lexicographer.service._UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return new _UserDetailsService();
 	}
-	
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -41,19 +41,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-			.antMatchers("/admin/**","/users/**","/categories/**","/types/**","/languages/**","/roles/**","/words/**","/").hasRole("ADMIN")
-			.antMatchers("/","/register","/**/favicon.ico","/css/**","/js/**","/images/**","/webjars/**").permitAll()
-			.anyRequest().authenticated()
-			.and()
-			.formLogin()
-			.loginPage("/login")
-			.defaultSuccessUrl("/")
-			.failureUrl("/login?error")
-			.permitAll()
-			.and()
-			.logout().permitAll();
+		http.rememberMe().userDetailsService(userDetailsService());
+		http.authorizeRequests().antMatchers("/", "/register", "/**/favicon.ico", "/css/**", "/js/**", "/images/**", "/webjars/**").permitAll();
+		http.authorizeRequests().antMatchers("/admin/**", "/users/**", "/categories/**", "/types/**", "/languages/**", "/roles/**",	"/words/**").access("hasRole('ADMIN')");
+		http.authorizeRequests().anyRequest().authenticated();
+		http.formLogin().loginPage("/login").defaultSuccessUrl("/").failureUrl("/login?error").permitAll();
+		http.logout().permitAll();
+
 	}
-	
-	
+
 }
